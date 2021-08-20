@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block title %}
+<title>Home : My timeline</title>
+{% endblock%}
+{% block content %}
+<h1 class="h2 text-default text-center">Welcome to Twitter bot and Scrapper</h1>
+<ul>
+    {% for tweet in timeline %}
+    <div class="card" style="width: 100%;">
+        <div class="card-body">
+            <h5 class="card-title"><b class=" text-lg">
+                {% if tweet.user.profile_image_url %}
+                <img src="{{ tweet.user.profile_image_url }}" alt="{{tweet.user.name }}" style="border-radius: 50%" > 
+                {% endif %} 
+                <a class="text-default" href="{% url 'profile' tweet.user.id %}">
+                    {{tweet.user.name }}
+                </a>
+            </b></h5>
+            <h6 class="card-subtitle mb-2 text-muted"><span><i></i></span></h6>
+            <p class="card-text">{{ tweet.text}}</p>
+            <!---
+                <a href="#" class="card-link">View Tweet</a>
+            --->
+            </div>
+        </div>
+        {% endfor%}
+        {% endblock %}

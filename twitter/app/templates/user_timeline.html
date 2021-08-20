@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container">
+    <p class="text text-lg">{{user.name}}</p>
+    <p class="text text-default">{{user.description}}</p>
+
+    <div class="container">
+        {% for tweet in user.timeline %}
+        <p class="text text-default">{{tweet}}</p>
+    </div>
+</div>
+{% endblock %}
